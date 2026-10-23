@@ -1,102 +1,121 @@
 @extends('layouts.app')
 
-@section('title', 'Aetheria Gallery &mdash; Galeri Lukisan Digital Eksklusif')
+@section('title', 'Aetheria Gallery &mdash; Galeri Lukisan Digital')
 
 @section('content')
 
-<!-- Hero Section -->
-<section class="py-5 border-bottom border-secondary border-opacity-25" style="background: radial-gradient(circle at 50% 0%, rgba(0, 242, 254, 0.08) 0%, transparent 60%);">
-    <div class="container py-4">
+<!-- Hero Welcome Banner (Reference Style: Welcome To - Galeri Lukisan DIGITAL) -->
+<section class="hero-welcome-stage text-center">
+    <div class="container position-relative" style="z-index: 1;">
         <div class="row align-items-center justify-content-between g-4">
-            <div class="col-lg-7">
-                <div class="hero-tag mb-3">
-                    <span class="pulse-dot"></span>
-                    <span>Galeri Lukisan Digital &bull; Tema 3 NIM 251011700713</span>
-                </div>
-                <h1 class="display-4 fw-extrabold text-light mb-3" style="letter-spacing: -0.02em; line-height: 1.15;">
-                    Eksplorasi Mahakarya <br>
-                    <span class="heading-gradient">Seni Lukis Digital Modern</span>
-                </h1>
-                <p class="lead text-secondary mb-4" style="font-size: 1.1rem; max-width: 600px;">
-                    Kurasi karya digital beresolusi ultra-tinggi yang dirancang menggunakan perangkat lunak industri terdepan seperti Blender, Cinema 4D, Unreal Engine, dan Photoshop.
-                </p>
+            
+            <!-- Left Themed Illustration: Creative Studio & Potted Flora -->
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="d-flex flex-column gap-3 align-items-center">
+                    <div class="hero-deco-card text-center w-100">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-dark border border-secondary text-success small">
+                                <i class="bi bi-flower1 me-1"></i> Studio Flora
+                            </span>
+                            <i class="bi bi-broadcast text-info small"></i>
+                        </div>
+                        <div class="py-2">
+                            <i class="bi bi-tree-fill hero-deco-plant-icon"></i>
+                        </div>
+                        <div class="text-secondary small mt-1">Creative Space &bull; UNPAM</div>
+                    </div>
 
-                <!-- Search Form -->
-                <form action="{{ route('artworks.index') }}" method="GET" class="mb-4">
-                    @if(request('software'))
-                        <input type="hidden" name="software" value="{{ request('software') }}">
-                    @endif
-                    <div class="input-group input-group-lg shadow-sm" style="max-width: 580px;">
-                        <span class="input-group-text bg-dark border-secondary text-secondary ps-3">
-                            <i class="bi bi-search text-info"></i>
-                        </span>
-                        <input type="text" name="search" class="form-control form-control-dark" placeholder="Cari judul lukisan, nama artis, atau software..." value="{{ request('search') }}">
-                        @if(request('search'))
-                            <a href="{{ route('artworks.index', array_filter(['software' => request('software')])) }}" class="btn btn-dark-slate d-flex align-items-center">
-                                <i class="bi bi-x-lg"></i>
-                            </a>
+                    <div class="hero-deco-card w-100">
+                        <div class="hero-deco-canvas-preview mb-2">
+                            <img src="{{ asset('assets/images/1.jpg') }}" alt="Artwork Canvas">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-light small fw-bold text-truncate" style="max-width: 130px;">Neo-Tokyo 4K</span>
+                            <span class="badge bg-info text-dark" style="font-size: 0.65rem;">Digital Art</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Content (Exact Match to Lecturer's Reference Composition) -->
+            <div class="col-lg-6 col-12 mx-auto">
+                <div class="py-2">
+                    <!-- Top Logo / Emblem with SI UNPAM -->
+                    <div class="hero-unpam-emblem">
+                        <div class="hero-unpam-icon-box mb-2">
+                            <i class="bi bi-brush"></i>
+                        </div>
+                        <span class="hero-unpam-label">SI UNPAM</span>
+                    </div>
+
+                    <!-- "Welcome To" in stylized serif/cursive script -->
+                    <div class="welcome-script">Welcome To</div>
+
+                    <!-- Main Large Title -->
+                    <h1 class="hero-main-title">
+                        Galeri Lukisan
+                        <span class="neon-word">DIGITAL</span>
+                    </h1>
+
+                    <!-- Student & Lecturer Center Information Box -->
+                    <div class="hero-lecturer-meta my-3">
+                        <div class="meta-nim">251011700713</div>
+                        <div class="meta-email">mshouqi08@gmail.com</div>
+                        <div class="meta-prodi">Prodi Sistem Informasi</div>
+                        <div class="meta-dosen">AFIF EFENDI</div>
+                    </div>
+
+                    <!-- Search Input Bar -->
+                    <form action="{{ route('artworks.index') }}#gallery-section" method="GET" class="mt-4 mx-auto" style="max-width: 520px;">
+                        @if(request('software'))
+                            <input type="hidden" name="software" value="{{ request('software') }}">
                         @endif
-                        <button class="btn btn-neon px-4" type="submit">
-                            Cari Karya
-                        </button>
-                    </div>
-                </form>
+                        <div class="input-group input-group-lg shadow-lg">
+                            <span class="input-group-text bg-dark border-secondary text-secondary ps-3">
+                                <i class="bi bi-search text-info"></i>
+                            </span>
+                            <input type="text" name="search" class="form-control form-control-dark" placeholder="Cari karya lukisan atau software..." value="{{ request('search') }}">
+                            @if(request('search'))
+                                <a href="{{ route('artworks.index', array_filter(['software' => request('software')])) }}" class="btn btn-dark-slate d-flex align-items-center">
+                                    <i class="bi bi-x-lg"></i>
+                                </a>
+                            @endif
+                            <button class="btn btn-neon px-4" type="submit">
+                                Cari
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-                <!-- Stats Badges -->
-                <div class="d-flex flex-wrap gap-4 pt-2">
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="bi bi-images fs-4 text-info"></i>
-                        <div>
-                            <div class="fw-bold text-light fs-5">{{ $totalArtworks }} Karya</div>
-                            <div class="text-secondary small">Katalog Aktif</div>
+            <!-- Right Themed Illustration: Digital Canvas & Workstation Tablet -->
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="d-flex flex-column gap-3 align-items-center">
+                    <div class="hero-deco-card w-100">
+                        <div class="hero-deco-canvas-preview mb-2">
+                            <img src="{{ asset('assets/images/2.jpg') }}" alt="Celestial Canvas">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-light small fw-bold text-truncate" style="max-width: 130px;">Celestial 5K</span>
+                            <span class="badge bg-warning text-dark" style="font-size: 0.65rem;">Octane Render</span>
                         </div>
                     </div>
-                    <div class="vr bg-secondary opacity-50 d-none d-sm-block"></div>
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="bi bi-person-workspace fs-4 text-warning"></i>
-                        <div>
-                            <div class="fw-bold text-light fs-5">{{ $totalArtists }} Kreator</div>
-                            <div class="text-secondary small">Seniman Digital</div>
+
+                    <div class="hero-deco-card text-center w-100">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-dark border border-secondary text-info small">
+                                <i class="bi bi-laptop me-1"></i> Workstation
+                            </span>
+                            <i class="bi bi-palette text-warning small"></i>
                         </div>
-                    </div>
-                    <div class="vr bg-secondary opacity-50 d-none d-sm-block"></div>
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="bi bi-badge-8k fs-4 text-success"></i>
-                        <div>
-                            <div class="fw-bold text-light fs-5">Ultra HD &amp; 8K</div>
-                            <div class="text-secondary small">Resolusi Master</div>
+                        <div class="py-2">
+                            <i class="bi bi-tablet-landscape-fill fs-1 text-info opacity-75"></i>
                         </div>
+                        <div class="text-secondary small mt-1">Stylus &amp; Ultra-Res Canvas</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Featured Showcase Card Hero Right -->
-            <div class="col-lg-5 d-none d-lg-block">
-                @if($artworks->isNotEmpty())
-                    @php $featured = $artworks->first(); @endphp
-                    <div class="card card-aetheria p-2 position-relative shadow-lg">
-                        <div class="artwork-img-wrapper rounded-3">
-                            <img src="{{ $featured->image_url }}" alt="{{ $featured->title }}" loading="lazy">
-                            <div class="artwork-overlay-badge">
-                                <i class="bi bi-star-fill text-warning me-1"></i> Featured Masterpiece
-                            </div>
-                            <div class="artwork-software-badge">
-                                <i class="bi bi-cpu me-1"></i> {{ $featured->software_used }}
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <h5 class="fw-bold text-light mb-0">{{ $featured->title }}</h5>
-                                <span class="artwork-price fs-6">{{ $featured->formatted_price }}</span>
-                            </div>
-                            <p class="text-secondary small mb-3">Oleh <span class="text-info fw-semibold">{{ $featured->artist }}</span> &bull; {{ $featured->resolution }}</p>
-                            <a href="{{ route('artworks.show', $featured->id) }}" class="btn btn-neon-outline w-100 btn-sm py-2">
-                                <i class="bi bi-eye me-1"></i> Buka Rincian Karya Unggulan
-                            </a>
-                        </div>
-                    </div>
-                @endif
-            </div>
         </div>
     </div>
 </section>
@@ -112,12 +131,12 @@
                     <span class="text-secondary small fw-semibold me-2">
                         <i class="bi bi-funnel-fill text-info me-1"></i> Filter Software:
                     </span>
-                    <a href="{{ route('artworks.index', array_filter(['search' => request('search'), 'sort' => request('sort')])) }}" 
+                    <a href="{{ route('artworks.index', array_filter(['search' => request('search'), 'sort' => request('sort')])) }}#gallery-section" 
                        class="filter-pill {{ !request('software') ? 'active' : '' }}">
-                        Semua
+                        Semua ({{ $totalArtworks }})
                     </a>
                     @foreach($softwares as $sw)
-                        <a href="{{ route('artworks.index', array_filter(['software' => $sw, 'search' => request('search'), 'sort' => request('sort')])) }}" 
+                        <a href="{{ route('artworks.index', array_filter(['software' => $sw, 'search' => request('search'), 'sort' => request('sort')])) }}#gallery-section" 
                            class="filter-pill {{ request('software') == $sw ? 'active' : '' }}">
                             {{ $sw }}
                         </a>
@@ -127,7 +146,7 @@
 
             <!-- Sort Selector -->
             <div class="col-lg-4 text-lg-end">
-                <form action="{{ route('artworks.index') }}" method="GET" class="d-inline-flex align-items-center gap-2">
+                <form action="{{ route('artworks.index') }}#gallery-section" method="GET" class="d-inline-flex align-items-center gap-2">
                     @if(request('search'))
                         <input type="hidden" name="search" value="{{ request('search') }}">
                     @endif
@@ -136,7 +155,7 @@
                     @endif
                     <label for="sort" class="text-secondary small text-nowrap">Urutkan:</label>
                     <select name="sort" id="sort" class="form-select form-select-sm form-select-dark" onchange="this.form.submit()" style="width: auto;">
-                        <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>ID Terdaftar</option>
+                        <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Katalog Terbaru</option>
                         <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Harga: Termurah</option>
                         <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Harga: Tertinggi</option>
                         <option value="title_asc" {{ request('sort') == 'title_asc' ? 'selected' : '' }}>Judul (A - Z)</option>
@@ -149,7 +168,7 @@
         @if(request('search') || request('software'))
             <div class="alert alert-dark border border-secondary border-opacity-50 d-flex justify-content-between align-items-center py-2 px-3 mb-4 rounded-3">
                 <div class="small text-secondary">
-                    Menampilkan hasil untuk:
+                    Menampilkan hasil:
                     @if(request('search'))
                         <span class="badge bg-secondary text-light me-1">Pencarian: "{{ request('search') }}"</span>
                     @endif
@@ -158,7 +177,7 @@
                     @endif
                     ({{ $artworks->count() }} karya ditemukan)
                 </div>
-                <a href="{{ route('artworks.index') }}" class="btn btn-sm btn-link text-info text-decoration-none py-0">
+                <a href="{{ route('artworks.index') }}#gallery-section" class="btn btn-sm btn-link text-info text-decoration-none py-0">
                     <i class="bi bi-arrow-counterclockwise me-1"></i> Reset Filter
                 </a>
             </div>
@@ -172,11 +191,11 @@
                 </div>
                 <h4 class="fw-bold text-light mb-2">Tidak Ada Karya yang Cocok</h4>
                 <p class="text-secondary mb-4">
-                    Maaf, tidak ditemukan lukisan digital dengan kata kunci atau filter yang Anda tentukan. Silakan coba kata kunci lain.
+                    Maaf, tidak ditemukan lukisan digital dengan kriteria tersebut. Silakan gunakan kata kunci lain.
                 </p>
                 <div>
-                    <a href="{{ route('artworks.index') }}" class="btn btn-neon px-4">
-                        <i class="bi bi-arrow-left me-1"></i> Lihat Semua Karya
+                    <a href="{{ route('artworks.index') }}#gallery-section" class="btn btn-neon px-4">
+                        <i class="bi bi-arrow-left me-1"></i> Tampilkan Semua Koleksi
                     </a>
                 </div>
             </div>
@@ -260,6 +279,57 @@
     </div>
 </section>
 
+<!-- About Gallery Feature Section -->
+<section id="about-gallery" class="py-5 border-top border-secondary border-opacity-25" style="background-color: #0b0d10;">
+    <div class="container py-3">
+        <div class="row g-4 align-items-center justify-content-between">
+            <div class="col-lg-5">
+                <span class="hero-tag mb-3">
+                    <i class="bi bi-shield-check text-info"></i> Keaslian &amp; Kualitas Terjamin
+                </span>
+                <h3 class="fw-bold text-light mb-3">
+                    Standar Kurasi Karya <br><span class="cyan-gradient-text">Aetheria Gallery</span>
+                </h3>
+                <p class="text-secondary" style="line-height: 1.7;">
+                    Setiap lukisan digital yang ditampilkan telah melewati proses kurasi mendalam untuk memastikan kualitas render asli hingga 8K Ultra HD, integritas gamut warna DCI-P3, serta keaslian lisensi karya dari para kreator terkemuka.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <div class="card card-aetheria p-3 h-100">
+                            <i class="bi bi-badge-8k fs-2 text-info mb-2"></i>
+                            <h6 class="fw-bold text-light mb-1">Ultra-Res Resolution</h6>
+                            <p class="text-secondary small mb-0">Rendering resolusi tinggi mulai dari 4K hingga 8K untuk ketajaman tanpa kompromi.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card card-aetheria p-3 h-100">
+                            <i class="bi bi-file-earmark-lock fs-2 text-warning mb-2"></i>
+                            <h6 class="fw-bold text-light mb-1">Sertifikat Lisensi</h6>
+                            <p class="text-secondary small mb-0">Hak guna komersial dan non-komersial resmi yang diterbitkan untuk setiap karya.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card card-aetheria p-3 h-100">
+                            <i class="bi bi-cpu fs-2 text-danger mb-2"></i>
+                            <h6 class="fw-bold text-light mb-1">Master Software</h6>
+                            <p class="text-secondary small mb-0">Diciptakan dengan pipeline profesional: Blender 3D, Cinema 4D, Unreal Engine, &amp; Photoshop.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card card-aetheria p-3 h-100">
+                            <i class="bi bi-lightning-charge fs-2 text-success mb-2"></i>
+                            <h6 class="fw-bold text-light mb-1">Pengiriman Instan</h6>
+                            <p class="text-secondary small mb-0">Akses berkas TIFF 16-bit dan PNG lossless langsung setelah proses verifikasi selesai.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Quick View Modal -->
 <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -299,7 +369,7 @@
 
                         <div class="d-flex gap-2">
                             <a id="quickViewDetailLink" href="#" class="btn btn-neon w-100 py-2">
-                                <i class="bi bi-box-arrow-up-right me-1"></i> Buka Halaman Rincian Lengkap
+                                <i class="bi bi-box-arrow-up-right me-1"></i> Buka Rincian Lengkap
                             </a>
                         </div>
                     </div>

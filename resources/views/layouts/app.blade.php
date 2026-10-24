@@ -14,8 +14,8 @@
     <!-- Bootstrap 5 CSS dari folder public/Bootstrap (Sesuai Ketentuan Soal UTS Poin 5) -->
     <link rel="stylesheet" href="{{ asset('Bootstrap/css/bootstrap.min.css') }}">
     
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Bootstrap Icons Lokal (100% Offline Tanpa CDN) -->
+    <link rel="stylesheet" href="{{ asset('Bootstrap/icons/bootstrap-icons.min.css') }}">
 
     <!-- Custom Dark Mode Minimalis Styling -->
     <link rel="stylesheet" href="{{ asset('css/aetheria-dark.css') }}">

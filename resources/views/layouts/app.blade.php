@@ -27,7 +27,7 @@
     <!-- Main Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-aetheria sticky-top py-3">
         <div class="container">
-            <a class="navbar-brand navbar-brand-aetheria" href="{{ route('artworks.index') }}">
+            <a class="navbar-brand navbar-brand-aetheria" href="{{ route('home') }}">
                 <span class="brand-glow-icon">
                     <i class="bi bi-gem"></i>
                 </span>
@@ -41,8 +41,13 @@
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-2">
                     <li class="nav-item">
-                        <a class="nav-link nav-link-aetheria {{ request()->routeIs('artworks.index') && !request()->filled('software') ? 'active' : '' }}" href="{{ route('artworks.index') }}">
-                            <i class="bi bi-grid-3x3-gap-fill me-1"></i> Koleksi Galeri
+                        <a class="nav-link nav-link-aetheria {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">
+                            <i class="bi bi-house-door me-1"></i> Beranda
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-aetheria {{ request()->routeIs('artworks.*') ? 'active' : '' }}" href="{{ route('artworks.index') }}">
+                            <i class="bi bi-grid-3x3-gap-fill me-1"></i> Galeri Lukisan
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -60,16 +65,16 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-link-aetheria" href="{{ route('artworks.index') }}#about-gallery">
+                        <a class="nav-link nav-link-aetheria" href="{{ route('home') }}#about-gallery">
                             <i class="bi bi-stars me-1"></i> Tentang Galeri
                         </a>
                     </li>
                 </ul>
 
-                <!-- Right Action Button -->
+                <!-- Right Action Button: Direct to dedicated Gallery Page -->
                 <div class="d-flex align-items-center gap-2">
-                    <a href="{{ route('artworks.index') }}#gallery-section" class="btn btn-neon btn-sm px-4 py-2">
-                        <i class="bi bi-compass me-1"></i> Eksplorasi Karya
+                    <a href="{{ route('artworks.index') }}" class="btn btn-neon btn-sm px-4 py-2">
+                        <i class="bi bi-grid-3x3-gap-fill me-1"></i> Buka Galeri
                     </a>
                 </div>
             </div>
@@ -106,11 +111,11 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6">
-                    <h6 class="text-light fw-bold mb-3 text-uppercase small" style="letter-spacing: 0.08em;">Navigasi Cepat</h6>
+                    <h6 class="text-light fw-bold mb-3 text-uppercase small" style="letter-spacing: 0.08em;">Navigasi Halaman</h6>
                     <ul class="list-unstyled text-secondary small mb-0 d-flex flex-column gap-2">
-                        <li><a href="{{ route('artworks.index') }}" class="text-secondary text-decoration-none hover-cyan"><i class="bi bi-chevron-right text-info me-1"></i> Beranda &amp; Katalog</a></li>
-                        <li><a href="{{ route('artworks.index') }}#gallery-section" class="text-secondary text-decoration-none hover-cyan"><i class="bi bi-chevron-right text-info me-1"></i> Filter Software</a></li>
-                        <li><a href="{{ route('artworks.index') }}#about-gallery" class="text-secondary text-decoration-none hover-cyan"><i class="bi bi-chevron-right text-info me-1"></i> Tentang Kurasi</a></li>
+                        <li><a href="{{ route('home') }}" class="text-secondary text-decoration-none hover-cyan"><i class="bi bi-chevron-right text-info me-1"></i> Halaman Beranda</a></li>
+                        <li><a href="{{ route('artworks.index') }}" class="text-secondary text-decoration-none hover-cyan"><i class="bi bi-chevron-right text-info me-1"></i> Halaman Galeri Lukisan</a></li>
+                        <li><a href="{{ route('home') }}#about-gallery" class="text-secondary text-decoration-none hover-cyan"><i class="bi bi-chevron-right text-info me-1"></i> Tentang Kurasi</a></li>
                     </ul>
                 </div>
 

@@ -8,7 +8,25 @@ use Illuminate\Http\Request;
 class DigitalArtController extends Controller
 {
     /**
-     * Display a listing of digital artworks.
+     * Display the landing/home page with Welcome Banner and featured highlights.
+     */
+    public function home(Request $request)
+    {
+        // If user submitted search or filter from home, redirect to dedicated gallery catalog page
+        if ($request->filled('search') || $request->filled('software')) {
+            return redirect()->route('artworks.index', $request->query());
+        }
+
+        $featuredArtworks = DigitalArt::inRandomOrder()->limit(3)->get();
+        $totalArtworks = DigitalArt::count();
+        $totalArtists = DigitalArt::distinct('artist')->count('artist');
+        $softwares = ['Blender 3D', 'Photoshop', 'Cinema 4D', 'Unreal Engine 5', 'Procreate', 'Houdini'];
+
+        return view('home', compact('featuredArtworks', 'totalArtworks', 'totalArtists', 'softwares'));
+    }
+
+    /**
+     * Display a dedicated listing page of digital artworks (Gallery Catalog).
      */
     public function index(Request $request)
     {

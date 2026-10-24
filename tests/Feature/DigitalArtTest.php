@@ -62,11 +62,23 @@ class DigitalArtTest extends TestCase
     }
 
     /**
-     * Test search and filter functionality.
+     * Test dedicated gallery page loads all artworks.
+     */
+    public function test_dedicated_gallery_page_loads_all_artworks(): void
+    {
+        $response = $this->get('/artworks');
+
+        $response->assertStatus(200);
+        $response->assertSee('Katalog Galeri');
+        $response->assertSee('Lukisan Digital');
+    }
+
+    /**
+     * Test search and filter functionality on dedicated gallery page.
      */
     public function test_filter_by_software(): void
     {
-        $response = $this->get('/?software=Blender');
+        $response = $this->get('/artworks?software=Blender');
 
         $response->assertStatus(200);
         $response->assertSee('Blender');

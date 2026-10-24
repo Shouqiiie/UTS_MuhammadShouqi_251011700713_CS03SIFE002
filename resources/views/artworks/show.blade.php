@@ -10,7 +10,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 small">
                 <li class="breadcrumb-item">
-                    <a href="{{ route('artworks.index') }}" class="text-secondary text-decoration-none">
+                    <a href="{{ route('home') }}" class="text-secondary text-decoration-none">
                         <i class="bi bi-house-door me-1"></i> Beranda
                     </a>
                 </li>
